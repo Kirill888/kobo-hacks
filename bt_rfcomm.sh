@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #How often to query BT device
-SLEEP_TIME=30
+SLEEP_TIME=10
 
 # getty command
 #   busybox shipped with kobo does not have getty command
@@ -58,7 +58,7 @@ tty_loop () {
 cc=0
 while ! hciconfig hci0 > /dev/null 2>&1 ; do
   cc=$(( $cc + 1 ))
-  if [[ $cc -gt 100 ]] ; then
+  if [[ $cc -gt 60 ]] ; then
     echo "User didn't enable bluetooth, giving up"
     exit 1
   fi
