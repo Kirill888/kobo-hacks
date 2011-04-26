@@ -55,7 +55,13 @@ tty_loop () {
 ######################################
 
 #Wait for user to enable bluetooth
+cc=0
 while ! hciconfig hci0 > /dev/null 2>&1 ; do
+  cc=$(( $cc + 1 ))
+  if [[ $cc -gt 100 ]] ; then
+    echo "User didn't enable bluetooth, giving up"
+    exit 1
+  fi
   echo "waiting for bluetooth..."
   sleep $SLEEP_TIME
 done
