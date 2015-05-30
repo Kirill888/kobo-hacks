@@ -1,0 +1,1 @@
+Just a place to dump some of mine scripts for working with Kobo reader (currently it is just bluetooth console, but maybe more will come)
